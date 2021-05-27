@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tochka</title>
+</head>
+<body>
+    <script>
+        const str = 'abcdf'
+        let count = 0
+        let nolast = str.substr(0, str.length - 1)
+        let last = str.substr(str.length - 1)
+        let final = []
+
+        const main = nolast => {
+            let arr = []
+            let long = ''
+
+            for(let i = 0; i < 2 **(str.length - 1); i++ ){arr.push(nolast)}
+
+            //console.log(arr)
+            long = arr.join('').split('')
+
+            for(let j = 0; j <= long.length - 1 ; j += nolast.length){
+                    let n = 0
+                    for( n = 0 ; n <= nolast.length - 1; n++){
+                        long[j + n ] += '.'
+                    }
+                    j += ++count
+            }
+
+            for(let r = nolast.length - 1 ; r <= long.length - 1 ; r += nolast.length){
+                final.push(long[r - 3] + long[r - 2] + long[r - 1] + long[r] + last)
+            }
+
+            //console.log(long)
+            //console.log(final)
+            console.log([...new Set(final)])
+        }
+
+        main(nolast)
+
+    </script>
+</body>
+</html>
